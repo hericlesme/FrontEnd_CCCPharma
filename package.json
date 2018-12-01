@@ -1,0 +1,29 @@
+{
+  "name": "frontend_cccpharma",
+  "version": "1.0.0",
+  "description": "CCC-Pharma Frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hericlesme/FrontEnd_CCCPharma.git"
+  },
+  "keywords": [
+    "frontend",
+    "javascript",
+    "pharma",
+    "ccc",
+    "ufcg"
+  ],
+  "author": "Squad Moranguinho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hericlesme/FrontEnd_CCCPharma/issues"
+  },
+  "homepage": "https://github.com/hericlesme/FrontEnd_CCCPharma#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
