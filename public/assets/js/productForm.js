@@ -1,10 +1,10 @@
 function handleSubmit(event) {
 	event.preventDefault();
 	
-	const name = document.getElementsByName("nome")[0].value;
-	const category = document.getElementsByName("categoria")[0].value;
-	const bar_code = document.getElementsByName("codigo")[0].value;
-	const manufacturer = document.getElementsByName("fabricante")[0].value;
+	const name = $("[name]=nome")[0].value;
+	const category = $("[name]=categoria")[0].value;
+	const bar_code = $("[name]=codigo")[0].value;
+	const manufacturer = $("[name]=fabricante")[0].value;
 	
 	const situation = true; // ??
 	
@@ -14,5 +14,5 @@ function handleSubmit(event) {
 	console.log("fabricante foi " + manufacturer);
 }
 
-const form = document.getElementsByClassName("product_form")[0];
+const form = $(".product_form")[0];
 form.addEventListener('submit', handleSubmit);
