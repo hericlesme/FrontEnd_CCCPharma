@@ -1,7 +1,23 @@
 class ProductForm extends HTMLFormElement {
+	handleSubmit(event) {
+		event.preventDefault();
+		
+		const name = document.getElementByName("nome").value;
+		const category = document.getElementByName("categoria").value;
+		const bar_code = document.getElementByName("codigo").value;
+		const manufacturer = document.getElementByName("fabricante").value;
+		
+		const situation = true; // ??
+		
+		console.log("nome foi " + name);
+		console.log("categoria foi " + category);
+		console.log("codigo de barras foi " + bar_code);
+		console.log("fabricante foi " + manufacturer);
+	}
+
     connectedCallback(){
         this.render();
-		this.addEventListener('submit', this.handleSubmit);
+		this.addEventListener('submit', handleSubmit);
     }
 
     render(){
@@ -20,22 +36,6 @@ class ProductForm extends HTMLFormElement {
 		</form>
 		`
     }
-
-    handleSubmit(event) {
-		event.preventDefault();
-		
-		const name = document.getElementByName("nome").value;
-		const category = document.getElementByName("categoria").value;
-		const bar_code = document.getElementByName("codigo").value;
-		const manufacturer = document.getElementByName("fabricante").value;
-		
-		const situation = true; // ??
-		
-		console.log("nome foi " + name);
-		console.log("categoria foi " + category);
-		console.log("codigo de barras foi " + bar_code);
-		console.log("fabricante foi " + manufacturer);
-	}
 }
 
 try {
