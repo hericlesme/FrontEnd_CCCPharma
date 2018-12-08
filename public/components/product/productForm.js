@@ -24,18 +24,18 @@ class ProductForm extends HTMLFormElement {
 
     render(){
         this.innerHTML = `
-        <h1>Formulário de cadastro de produtos</h1>
-		<form class="product_form">
-			<div>
+	        <h1>Formulário de cadastro de produtos</h1>
+			<form class="product_form">
 				<div>
-					<p> Nome: <input type="text" name="nome" class="field" autocomplete="off" required> </p>
-					<p> Categoria: <input type="text" name="categoria" class="field" autocomplete="off" required> </p>
-					<p> Código de Barra: <input type="text" name="codigo" class="field" autocomplete="off" required> </p>
-					<p> Fabricante: <input type="text" name="fabricante" class="field" autocomplete="off" required> </p>
+					<div>
+						<p> Nome: <input type="text" name="nome" class="field" autocomplete="off" required> </p>
+						<p> Categoria: <input type="text" name="categoria" class="field" autocomplete="off" required> </p>
+						<p> Código de Barra: <input type="text" name="codigo" class="field" autocomplete="off" required> </p>
+						<p> Fabricante: <input type="text" name="fabricante" class="field" autocomplete="off" required> </p>
+					</div>
+					<button type="submit">Enviar</button>
 				</div>
-				<button type="submit">Enviar</button>
-			</div>
-		</form>
+			</form>
 		`
     }
 }
