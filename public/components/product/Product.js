@@ -1,4 +1,15 @@
 class Product extends HTMLElement {
+    /**
+    * Construtor de Product
+    * 
+    * @param product Object com os atributos de Product
+    */
+    constructor(product) {
+        super();
+        for (const attribute in product) {
+            this.setAttribute(attribute, product[attribute]);
+        }
+    }
 
     connectedCallback(){
         this.imageUrl = this.getAttribute('imageUrl');
@@ -29,3 +40,5 @@ try {
     h3.innerHTML = "Something went wrong!";
     document.body.appendChild(h3);
 }
+
+export {Product};

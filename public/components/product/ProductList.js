@@ -1,3 +1,5 @@
+import {Product} from './Product.js';
+
 class ProductList extends HTMLElement {
     getProductsJson() {
         // WORK IN PROGRESS
@@ -6,25 +8,21 @@ class ProductList extends HTMLElement {
             .catch(err => console.log(err.message));
     }
 
-    setProductList(productList) {
+    setProductsInDOM(productList) {
         productList.forEach(product => {
-            const productCard = document.createElement("product-card");
-            for (const attribute in product) {
-                productCard.setAttribute(attribute, product[attribute]);
-            }
+            const productCard = new Product(product);
             this.appendChild(productCard);
         });
     }
 
     connectedCallback(){
         this.url = "components/product"
-
         this.getProductsJson().then(productsJson => this.render(productsJson));
     }
 
     render(products){
         this.classList.add("product-list");
-        this.setProductList(products);
+        this.setProductsInDOM(products);
     }
 }
 
