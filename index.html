@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shrine (MDC Web Example App)</title>
+  <link rel="shortcut icon" href="https://material.io/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <script type="module" src="components/product/ProductList.js"></script>
+</head>
+<body class="home">
+  <aside class="mdc-drawer shrine-drawer">
+    <div class="mdc-drawer__header">
+      <i class="material-icons">
+        local_hospital
+      </i>
+      <h1 class="shrine-title">CCCPHARMA</h1>
+    </div>
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" aria-selected="true" href="#">
+          Todos os Produtos
+        </a>
+        <li class="shrine-select-item-divider mdc-list-divider" role="separator"></li>
+        <a class="mdc-list-item" href="#">
+          Medicamentos e Saúde
+        </a>
+        <a class="mdc-list-item" href="#">
+          Higiene Pessoal
+        </a>
+        <a class="mdc-list-item" href="#">
+          Cosméticos
+        </a>
+        <a class="mdc-list-item" href="#">
+          Alimentos
+        </a>
+        <a class="mdc-list-item" href="#">
+          Minha Conta
+        </a>
+      </nav>
+    </div>
+  </aside>
+  <div class="shrine-body">
+    <ul is="product-list"></ul>
+  </div>
+
+  <script src="bundle-home.js" async></script>
+</body>
+</html>
