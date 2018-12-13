@@ -1,3 +1,0 @@
-const $ = document.querySelector();
-
-export {$};
