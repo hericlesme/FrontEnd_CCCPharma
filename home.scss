@@ -7,6 +7,7 @@
 @import "@material/elevation/mdc-elevation";
 
 .home {
+  background: whitesmoke;
   display: flex; // Flexbox is used to easily arrange the persistent drawer and content side-by-side
 }
 
@@ -29,7 +30,7 @@
   @include mdc-image-list-masonry-columns(4);
 
   overflow: auto;
-  padding: 80px 100px 0;
+  padding: 30px 80px 0;
 
   .mdc-image-list__supporting {
     justify-content: center;
@@ -101,6 +102,7 @@
 }
 
 .product {
+  background: white;
   font-family: 'Raleway', sans-serif;
   border-radius: 5px;
   transition: .2s;
@@ -137,4 +139,19 @@
 
 .product:hover {
   transform: scale(1.05);
+}
+
+.banner {
+  margin: 10px;
+}
+
+.banner > img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.divisor {
+  padding: 2px;
+  margin: 0 10px;
+  background-color: #E0E0E0;
 }
