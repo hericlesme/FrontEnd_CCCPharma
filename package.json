@@ -1,29 +1,32 @@
 {
-  "name": "frontend_cccpharma",
-  "version": "1.0.0",
-  "description": "CCC-Pharma Frontend",
-  "main": "index.js",
+  "name": "mdc-103-web",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --progress"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hericlesme/FrontEnd_CCCPharma.git"
-  },
-  "keywords": [
-    "frontend",
-    "javascript",
-    "pharma",
-    "ccc",
-    "ufcg"
-  ],
-  "author": "Squad Moranguinho",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hericlesme/FrontEnd_CCCPharma/issues"
-  },
-  "homepage": "https://github.com/hericlesme/FrontEnd_CCCPharma#readme",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "babel-core": "^6.22.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.0",
+    "extract-loader": "^1.0.2",
+    "file-loader": "^1.1.11",
+    "material-icons": "^0.2.3",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^6.0.4",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.4.3"
+  },
+  "dependencies": {
+    "@material/button": "^0.40.0",
+    "@material/drawer": "^0.40.0",
+    "@material/elevation": "^0.40.0",
+    "@material/image-list": "^0.40.0",
+    "@material/list": "^0.40.0",
+    "@material/ripple": "^0.40.0",
+    "@material/textfield": "^0.40.0",
+    "@material/typography": "^0.39.0"
   }
 }
