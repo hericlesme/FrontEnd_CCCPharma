@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +8,7 @@
   <link rel="shortcut icon" href="https://material.io/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
 
   <script type="module" src="components/order_chipset/OrderChipSet.js"></script>
@@ -16,6 +16,7 @@
   <script type="module" src="components/product/ProductForm.js"></script>
   <script type="module" src="components/customDialog/CustomDialog.js"></script>
 </head>
+
 <body class="home">
   <aside class="mdc-drawer shrine-drawer">
     <div class="mdc-drawer__header">
@@ -45,6 +46,9 @@
         <a class="mdc-list-item" href="#">
           Minha Conta
         </a>
+        <a id="add-item" class="mdc-list-item" href="#">
+          Adicionar Item
+        </a>
       </nav>
     </div>
   </aside>
@@ -55,11 +59,9 @@
     <order-set></order-set>
     <div class="divisor"></div>
     <ul is="product-list"></ul>
-
-    <button id="add-item">Adicionar item</button>
-    <custom-dialog title="Adicionar novo item"></custom-dialog>
+  <custom-dialog title="Adicionar novo item"></custom-dialog>
   </div>
-
-  <script src="bundle-home.js" async></script>
+  <script src="bundle-home.js" defer></script>
 </body>
+
 </html>

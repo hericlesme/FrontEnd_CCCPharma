@@ -1,6 +1,7 @@
 class ProductForm extends HTMLFormElement {
-	handleSubmit() {
-		let $fields = document.getElementsByClassName("field");
+	handleSubmit(e) {
+		e.preventDefault();
+		let $fields = this.querySelectorAll('input');
 		// Validate fields (??)
 
 		const name = $fields[0].value;
@@ -18,25 +19,46 @@ class ProductForm extends HTMLFormElement {
 		console.log("quantidade: " + quantity);
 
 		// TODO Fetch POST
-		
 		this.reset();
 	}
 
     connectedCallback() {
-        this.render();
-    }
+		this.addEventListener('submit', this.handleSubmit);
+		this.render();
+	}
 
     render() {
+		// Modularizar
         this.innerHTML = `
-			<form class="product-form">
-				<div>
-					<label for="nome"> Nome: </label> <input type="text" id="nome" name="nome" class="field" autocomplete="off" required> <br>
-					<label for="categoria"> Categoria: </label> <input type="text" id="categoria" name="categoria" class="field" autocomplete="off" required> <br>
-					<label for="codigo"> Código de Barra: </label> <input type="text" id="codigo" name="codigo" class="field" autocomplete="off" required> <br>
-					<label for="fabricante"> Fabricante: </label> <input type="text" id="fabricante" name="fabricante" class="field" autocomplete="off" required> <br>
-					<label for="quantidade"> Quantidade: </label> <input type="number" id="quantidade" name="quantidade" class="field" autocomplete="off" required> <br>
+				<div class="mdc-text-field">
+				  <input type="text" id="nome" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label" for="my-text-field">Nome</label>
+				  <div class="mdc-line-ripple"></div>
 				</div>
-			</form>
+				<div class="mdc-text-field">
+				  <input type="text" id="categoria" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label" for="categoria">Categoria</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
+				<div class="mdc-text-field">
+				  <input type="text" id="codigo" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label" for="codigo">Código de Barras</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
+				<div class="mdc-text-field">
+				  <input type="text" id="fabricante" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label" for="fabricante">Fabricante</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
+				<div class="mdc-text-field">
+				  <input type="number" min="1" id="quantidade" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label" for="quantidade">Quantidade</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
+				<footer class="mdc-dialog__actions">
+					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">Cancelar</button>
+					<button id="submit" class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
+				</footer>
 		`
     }
 }
