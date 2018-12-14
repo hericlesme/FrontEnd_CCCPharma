@@ -1,3 +1,5 @@
+var glob = require("glob");
+
 function getStyleUse(bundleFilename) {
   return [
     {
@@ -19,26 +21,26 @@ function getStyleUse(bundleFilename) {
 
 module.exports = [
   {
-    entry: './home.scss',
+    entry: glob.sync("./assets/style/*.scss"),
     output: {
       // This is necessary for webpack to compile, but we never reference this js file.
       filename: 'style-app.js',
     },
     module: {
       rules: [{
-        test: /home.scss$/,
+        test: /\.scss$/,
         use: getStyleUse('app.css')
       }]
     },
   },
   {
-    entry: ["./home.js"],
+    entry: glob.sync("./assets/scripts/*.js"),
     output: {
       filename: "bundle-home.js"
     },
     module: {
       loaders: [{
-        test: /home.js$/,
+        test: /\.js$/,
         loader: 'babel-loader',
         query: {presets: ['env']}
       }]
