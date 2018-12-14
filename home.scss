@@ -5,6 +5,7 @@
 @import "@material/ripple/mixins";
 @import "@material/typography/mdc-typography";
 @import "@material/elevation/mdc-elevation";
+@import "@material/chips/mdc-chips";
 
 .home {
   background: whitesmoke;
@@ -154,4 +155,11 @@
   padding: 2px;
   margin: 0 10px;
   background-color: #E0E0E0;
+}
+
+/** Order Chips **/
+
+.mdc-chip {
+  background-color: #E0E0E0;
+  margin: 0 10px;
 }

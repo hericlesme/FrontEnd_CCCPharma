@@ -22,7 +22,7 @@ class ProductList extends HTMLUListElement {
 
     render(products){
         var classes = ['mdc-image-list', 'mdc-image-list--masonry', 'product-list'];
-        this.classList.add(...classes);
+        this.classList.add(...  classes);
         this.setProductsInDOM(products);
     }
 }
