@@ -10,8 +10,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
   <link rel="stylesheet" href="app.css">
+
   <script type="module" src="components/order_chipset/OrderChipSet.js"></script>
   <script type="module" src="components/product/ProductList.js"></script>
+  <script type="module" src="components/product/ProductForm.js"></script>
+  <script type="module" src="components/customDialog/CustomDialog.js"></script>
 </head>
 <body class="home">
   <aside class="mdc-drawer shrine-drawer">
@@ -52,6 +55,9 @@
     <order-set></order-set>
     <div class="divisor"></div>
     <ul is="product-list"></ul>
+
+    <button id="add-item">Adicionar item</button>
+    <custom-dialog title="Adicionar novo item"></custom-dialog>
   </div>
 
   <script src="bundle-home.js" async></script>
