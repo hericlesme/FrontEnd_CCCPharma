@@ -5,6 +5,12 @@ class CustomDialog extends HTMLElement {
 
     	this.contents = {
     		"product-form": `<form is="product-form"></form>`,
+    		"sign-up": `<form><input type="text"></input></form>`
+    	};
+
+    	this.identification = {
+    		"product-form": "pform",
+    		"sign-up": "register"
     	};
 
         this.render();
@@ -12,7 +18,7 @@ class CustomDialog extends HTMLElement {
 
     render() {
         this.innerHTML = `
-			<div class="mdc-dialog"
+			<div class="mdc-dialog" id="${ this.identification[this.content] }"
 		       role="alertdialog"
 		       aria-modal="false"
 		       aria-labelledby="my-dialog-title"
@@ -22,7 +28,7 @@ class CustomDialog extends HTMLElement {
 		      <div class="mdc-dialog__surface">
 		        <h2 class="mdc-dialog__title" id="my-dialog-title">${this.title}</h2>
 		        <div class="mdc-dialog__content" id="my-dialog-content">
-		          ${this.contents[ this.content ]}
+		          ${ this.contents[this.content] }
 		        </div>
 		      </div>
 		    </div>

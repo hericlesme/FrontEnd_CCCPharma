@@ -19,10 +19,14 @@ class ProductForm extends HTMLFormElement {
 		console.log("fabricante: " + manufacturer);
 		console.log("quantidade: " + quantity);
 
-		//let reqHeader = { "Content-Type": "application/json" };
-		fetch('http://ptsv2.com/t/7j1ti-1544841124/post', {
+		// URL used for test purposes only
+		// mode: "no-cors" also for test purposes
+		fetch('http://ptsv2.com/t/g7mku-1544891444/post', {
             method: 'POST',
-            headers: new Headers(),
+            mode: "no-cors",
+            headers: {
+            	"Content-Type": "application/json"
+        	},
             body: JSON.stringify({
             	name: name, 
             	category: category, 

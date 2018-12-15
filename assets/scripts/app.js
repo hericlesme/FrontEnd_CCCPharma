@@ -1,21 +1,42 @@
 import {MDCList} from '@material/list';
 import {MDCDialog} from '@material/dialog';
 
-const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
 new MDCList(document.querySelector('.mdc-list'));
 
-let $button = document.querySelector("#add-item");
-$button.addEventListener("click", () => {
-	dialog.open();
+const productDialog = new MDCDialog(document.querySelector('#pform'));
+
+let $addItemButton = document.querySelector("#add-item");
+$addItemButton.addEventListener("click", () => {
+	productDialog.open();
+	console.log(productDialog);
 });
 
-dialog.listen("MDCDialog:closing", (event) => {	
+productDialog.listen("MDCDialog:closing", (event) => {	
 	let action = event["detail"].action;
 	console.log( "acao: " + action );
 
 	if(action === "submit") {
-		let form = dialog.content_.querySelector("form");
+		let form = productDialog.content_.querySelector("form");
 		form.handleSubmit();
-		dialog.close();
+		productDialog.close();
 	}
 });
+
+const signupDialog = new MDCDialog(document.querySelector('#register'));
+
+let $signupButton = document.querySelector("#sign-up");
+$signupButton.addEventListener("click", () => {
+	signupDialog.open();
+	console.log(signupDialog);
+});
+
+//signupDialog.listen("MDCDialog:closing", (event) => {	
+//	let action = event["detail"].action;
+//	console.log( "acao: " + action );
+//
+//	if(action === "submit") {
+//		let form = signupDialog.content_.querySelector("form");
+//		form.handleSubmit();
+//		signupDialog.close();
+//	}
+//});
