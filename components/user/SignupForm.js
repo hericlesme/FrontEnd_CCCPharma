@@ -53,13 +53,13 @@ class SignupForm extends HTMLFormElement {
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="senha" class="mdc-text-field__input" required>
+				  <input type="password" autocomplete="off" id="senha" class="mdc-text-field__input" required>
 				  <label class="mdc-floating-label form-label" for="senha">Senha</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button id="submit" class="mdc-button mdc-dialog__button" type="submit">Registrar</button>
+					<button class="mdc-button mdc-dialog__button" type="submit">Registrar</button>
 				</footer>
 		`
     }

@@ -55,7 +55,7 @@ class ProductForm extends HTMLFormElement {
 		// Modularizar
         this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="nome" class="mdc-text-field__input" required>
+				  <input type="text" autocomplete="off" id="product-name" class="mdc-text-field__input" required>
 				  <label class="mdc-floating-label form-label" for="my-text-field">Nome</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
@@ -86,7 +86,7 @@ class ProductForm extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button id="submit" class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
+					<button class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
 				</footer>
 		`
     }
