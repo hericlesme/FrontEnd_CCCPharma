@@ -5,7 +5,7 @@ class CustomDialog extends HTMLElement {
 
     	this.contents = {
     		"product-form": `<form is="product-form"></form>`,
-    		"sign-up": `<form><input type="text"></input></form>`
+    		"sign-up": `<form is="sign-up-form"></form>`
     	};
 
     	this.identification = {
