@@ -14,6 +14,7 @@ class Product extends HTMLLIElement {
     connectedCallback() {
         this.imageUrl = this.getAttribute('imageUrl');
         this.category = this.getAttribute('category');
+        this.quantity = this.getAttribute('quantity');
         this.price = this.getAttribute('price');
         this.name = this.getAttribute('name');
         this.render();
@@ -28,14 +29,14 @@ class Product extends HTMLLIElement {
         <img class="mdc-image-list__image" src="${this.imageUrl}">
         <div class="mdc-image-list__supporting">
             <p>${this.category.toUpperCase()}</p>
-            <span>R$ ${this.price}</span>
+            <span>${this.quantity == 0 ? "Indisponível" : "R$" + this.price}</span>
         </div>
     `
     }
 }
 
 try {
-    customElements.define('product-card', Product, {extends: 'li'});
+    customElements.define('product-card', Product, { extends: 'li' });
 } catch (err) {
     const h3 = document.createElement('h3');
     h3.innerHTML = "Something went wrong!";
