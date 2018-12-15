@@ -1,6 +1,6 @@
 class ProductForm extends HTMLFormElement {
-	handleSubmit(e) {
-		e.preventDefault();
+	handleSubmit(event) {
+		event.preventDefault();
 		let $fields = this.querySelectorAll('input');
 		// Validate fields (??)
 
@@ -31,28 +31,28 @@ class ProductForm extends HTMLFormElement {
 		// Modularizar
         this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" id="nome" class="mdc-text-field__input" required>
-				  <label class="mdc-floating-label" for="my-text-field">Nome</label>
+				  <input type="text" autocomplete="off" id="nome" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="my-text-field">Nome</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="text" id="categoria" class="mdc-text-field__input" required>
-				  <label class="mdc-floating-label" for="categoria">Categoria</label>
+				  <input type="text" autocomplete="off" id="categoria" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="categoria">Categoria</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="text" id="codigo" class="mdc-text-field__input" required>
-				  <label class="mdc-floating-label" for="codigo">Código de Barras</label>
+				  <input type="text" autocomplete="off" id="codigo" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="codigo">Código de Barras</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="text" id="fabricante" class="mdc-text-field__input" required>
-				  <label class="mdc-floating-label" for="fabricante">Fabricante</label>
+				  <input type="text" autocomplete="off" id="fabricante" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="fabricante">Fabricante</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="number" min="1" id="quantidade" class="mdc-text-field__input" required>
-				  <label class="mdc-floating-label" for="quantidade">Quantidade</label>
+				  <input type="number" autocomplete="off" min="1" id="quantidade" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="quantidade">Quantidade</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<footer class="mdc-dialog__actions">

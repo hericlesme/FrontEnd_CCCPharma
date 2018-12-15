@@ -10,6 +10,11 @@
 @import "@material/textfield/mdc-text-field";
 @import "@material/button/mdc-button";
 
+.form-label {
+  padding-bottom: 6%;
+  font-size: 90%;
+}
+
 .home {
   background: whitesmoke;
   display: flex; // Flexbox is used to easily arrange the persistent drawer and content side-by-side

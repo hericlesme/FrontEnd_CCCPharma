@@ -1,7 +1,6 @@
 import {MDCList} from '@material/list';
 import {MDCDialog} from '@material/dialog';
 
-
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
 new MDCList(document.querySelector('.mdc-list'));
 
@@ -17,5 +16,6 @@ dialog.listen("MDCDialog:closing", (event) => {
 	if(action === "submit") {
 		let form = dialog.content_.querySelector("form");
 		form.handleSubmit();
+		dialog.close();
 	}
 });

@@ -1,6 +1,12 @@
 class CustomDialog extends HTMLElement {
     connectedCallback() {
     	this.title = this.getAttribute("title");
+    	this.content = this.getAttribute("content");
+
+    	this.contents = {
+    		"product-form": `<form is="product-form"></form>`,
+    	};
+
         this.render();
     }
 
@@ -16,8 +22,7 @@ class CustomDialog extends HTMLElement {
 		      <div class="mdc-dialog__surface">
 		        <h2 class="mdc-dialog__title" id="my-dialog-title">${this.title}</h2>
 		        <div class="mdc-dialog__content" id="my-dialog-content">
-		          
-		          <form is="product-form"></form>
+		          ${this.contents[ this.content ]}
 		        </div>
 		      </div>
 		    </div>
