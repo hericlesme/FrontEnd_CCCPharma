@@ -28,9 +28,9 @@ class ProductSale extends HTMLFormElement {
 				quantity: quantity
 			})
 		})
-			.then(function (res) { return res.json(); })
-			.then(function (data) { console.log("data:" + data); })
-			.catch(function (err) { console.log("error: " + err); })
+		.then(function (res) { return res.json(); })
+		.then(function (data) { console.log("data:" + data); })
+		.catch(function (err) { console.log("error: " + err); })
 
 		this.reset();
 	}

@@ -9,6 +9,7 @@ class ProductForm extends HTMLFormElement {
 		const bar_code = $fields[2].value;
 		const manufacturer = $fields[3].value;
 		const quantity = $fields[4].value;
+		const image_url = $fields[5].value;
 		
 		const situation = true; // ??
 		
@@ -18,6 +19,7 @@ class ProductForm extends HTMLFormElement {
 		console.log("codigo de barras: " + bar_code);
 		console.log("fabricante: " + manufacturer);
 		console.log("quantidade: " + quantity);
+		console.log("url: " + image_url);
 
 		// URL used for test purposes only
 		// mode: "no-cors" also for test purposes
@@ -33,6 +35,7 @@ class ProductForm extends HTMLFormElement {
             	bar_code: bar_code,
             	manufacturer: manufacturer,
             	quantity: quantity,
+            	image_url: image_url,
             	situation: situation
             })
         })
@@ -52,8 +55,13 @@ class ProductForm extends HTMLFormElement {
 		// Modularizar
         this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="nome" class="mdc-text-field__input" required>
+				  <input type="text" autocomplete="off" id="product-name" class="mdc-text-field__input" required>
 				  <label class="mdc-floating-label form-label" for="my-text-field">Nome</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
+				<div class="mdc-text-field">
+				  <input type="text" autocomplete="off" id="image-url" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="my-text-field">URL da imagem</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
@@ -78,7 +86,7 @@ class ProductForm extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button id="submit" class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
+					<button class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
 				</footer>
 		`
     }

@@ -18,14 +18,4 @@ $signupButton.addEventListener("click", () => {
 	signupDialog.open();
 });
 
-// let $productList = document.getElementById('product-list');
-// $productList.addEventListener('refresh', () => {
-// 	for (let i = 0; i < $productList.products.length; i++) {
-// 		$productList.products[i].addEventListener('click', () => {
-// 			purchaseForm.setupProductInfo($productList.products[i]);
-// 			productPurchase.open();
-// 		})
-// 	};
-// });
-
 export { productPurchase };
