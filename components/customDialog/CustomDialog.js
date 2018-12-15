@@ -4,15 +4,17 @@ class CustomDialog extends HTMLElement {
     	this.content = this.getAttribute("content");
 
     	this.contents = {
-				"product-form": `<form is="product-form"></form>`,
-				"product-sale": `<form is="product-sale"></form>`,
-    		"sign-up": `<form is="sign-up-form"></form>`
+			"product-form": `<form is="product-form"></form>`,
+			"product-sale": `<form is="product-sale"></form>`,
+    		"sign-up": `<form is="sign-up-form"></form>`,
+    		"login": `<form is="login-form"></form>`
     	};
 
     	this.identification = {
-				"product-form": "pform",
-				"product-sale": "purchase",
-    		"sign-up": "register"
+			"product-form": "pform-dialog",
+			"product-sale": "purchase-dialog",
+    		"sign-up": "register-dialog",
+    		"login": "login-dialog"
     	};
 
         this.render();

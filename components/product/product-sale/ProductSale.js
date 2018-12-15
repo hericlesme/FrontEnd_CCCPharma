@@ -47,7 +47,7 @@ class ProductSale extends HTMLFormElement {
 
 	render() {
 		let product = this.product;
-		let disabled = !this.product || this.product.quantity <= 0; 
+		let disabled = (!this.product || this.product.quantity <= 0); 
 			this.innerHTML = `
 				<div class="mdc-text-field">
 				  <input type="text" autocomplete="off" id="purchase-product" class="mdc-text-field__input" disabled placeholder=${product ? product.name : ""}>

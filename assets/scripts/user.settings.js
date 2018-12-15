@@ -8,6 +8,10 @@ const commands = (function () {
 }())
 
 const user = (function () {
+    // change role to see admin-options while acessing the website
+    // only working like this because auth-system is not integrated yet
+
+    //return { 'role': 'admin' }
     return null;
 }())
 
