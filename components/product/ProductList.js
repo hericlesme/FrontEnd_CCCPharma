@@ -1,6 +1,10 @@
 import {Product} from './Product.js';
 
 class ProductList extends HTMLUListElement {
+    constructor() {
+        super()
+        this.refresh = new CustomEvent('refresh');
+    }
     getProductsJson() {
         // WORK IN PROGRESS
         return fetch(this.url + "/products.json", {method: "GET"})
@@ -8,11 +12,12 @@ class ProductList extends HTMLUListElement {
             .catch(err => console.log(err.message));
     }
 
-    setProductsInDOM(productList) {
-        productList.forEach(product => {
+    setProductsInDOM() {
+        this.products.forEach(product => {
             const productCard = new Product(product);
             this.appendChild(productCard);
         });
+        this.dispatchEvent(this.refresh);
     }
 
     connectedCallback(){
@@ -21,9 +26,10 @@ class ProductList extends HTMLUListElement {
     }
 
     render(products){
+        this.products = products;
         var classes = ['mdc-image-list', 'mdc-image-list--masonry', 'product-list'];
         this.classList.add(...  classes);
-        this.setProductsInDOM(products);
+        this.setProductsInDOM();
     }
 }
 
