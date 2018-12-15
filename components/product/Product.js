@@ -15,11 +15,12 @@ class Product extends HTMLLIElement {
         this.imageUrl = this.getAttribute('imageUrl');
         this.category = this.getAttribute('category');
         this.quantity = this.getAttribute('quantity');
+        this.barcode = this.getAttribute('barcode');
         this.price = this.getAttribute('price');
         this.name = this.getAttribute('name');
         this.render();
     }
-
+    
     render() {
         let classes = ["mdc-image-list__item", "product"];
         this.classList.add(...classes);

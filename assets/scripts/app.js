@@ -1,5 +1,5 @@
-import {MDCList} from '@material/list';
-import {MDCDialog} from '@material/dialog';
+import { MDCList } from '@material/list';
+import { MDCDialog } from '@material/dialog';
 
 new MDCList(document.querySelector('.mdc-list'));
 
@@ -11,11 +11,11 @@ $addItemButton.addEventListener("click", () => {
 	console.log(productDialog);
 });
 
-productDialog.listen("MDCDialog:closing", (event) => {	
+productDialog.listen("MDCDialog:closing", (event) => {
 	let action = event["detail"].action;
-	console.log( "acao: " + action );
+	console.log("acao: " + action);
 
-	if(action === "submit") {
+	if (action === "submit") {
 		let form = productDialog.content_.querySelector("form");
 		form.handleSubmit();
 		productDialog.close();
@@ -23,6 +23,7 @@ productDialog.listen("MDCDialog:closing", (event) => {
 });
 
 const signupDialog = new MDCDialog(document.querySelector('#register'));
+const productPurchase = new MDCDialog(document.querySelector('#purchase'));
 
 let $signupButton = document.querySelector("#sign-up");
 $signupButton.addEventListener("click", () => {
@@ -30,13 +31,13 @@ $signupButton.addEventListener("click", () => {
 	console.log(signupDialog);
 });
 
-//signupDialog.listen("MDCDialog:closing", (event) => {	
-//	let action = event["detail"].action;
-//	console.log( "acao: " + action );
-//
-//	if(action === "submit") {
-//		let form = signupDialog.content_.querySelector("form");
-//		form.handleSubmit();
-//		signupDialog.close();
-//	}
-//});
+let $products = document.getElementsByClassName('product');
+let purchaseForm = document.querySelector('#purchase form');
+for (let i = 0; i < $products.length; i++) {
+	$products[i].addEventListener('click', () => {
+		console.log('oi');
+		purchaseForm.setupProductInfo($products[i]);
+		productPurchase.open();
+	});
+	console.log('ok');
+}

@@ -58,7 +58,7 @@ class SignupForm extends HTMLFormElement {
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<footer class="mdc-dialog__actions">
-					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">Cancelar</button>
+					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
 					<button id="submit" class="mdc-button mdc-dialog__button" type="submit">Registrar</button>
 				</footer>
 		`
