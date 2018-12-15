@@ -12,13 +12,30 @@ class ProductForm extends HTMLFormElement {
 		
 		const situation = true; // ??
 		
+		// debug
 		console.log("nome: " + name);
 		console.log("categoria: " + category);
 		console.log("codigo de barras: " + bar_code);
 		console.log("fabricante: " + manufacturer);
 		console.log("quantidade: " + quantity);
 
-		// TODO Fetch POST
+		//let reqHeader = { "Content-Type": "application/json" };
+		fetch('http://ptsv2.com/t/7j1ti-1544841124/post', {
+            method: 'POST',
+            headers: new Headers(),
+            body: JSON.stringify({
+            	name: name, 
+            	category: category, 
+            	bar_code: bar_code,
+            	manufacturer: manufacturer,
+            	quantity: quantity,
+            	situation: situation
+            })
+        })
+        .then( function(res) { return res.json(); } )
+        .then( function(data) { console.log("data:" + data); } )
+        .catch( function(err) { console.log("error: " + err); } )
+
 		this.reset();
 	}
 
