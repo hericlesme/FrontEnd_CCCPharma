@@ -18,5 +18,4 @@ $signupButton.addEventListener("click", () => {
 	signupDialog.open();
 });
 
-
 export { productPurchase };
