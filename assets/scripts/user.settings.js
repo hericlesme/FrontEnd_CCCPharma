@@ -3,7 +3,8 @@ const commands = (function () {
         "signup": document.querySelector("#sign-up"),
         "login": document.querySelector("#login"),
         "additem": document.querySelector("#add-item"),
-        "logout": document.querySelector("#logout")
+        "logout": document.querySelector("#logout"),
+        "report": document.querySelector("#report-button")
     }
 }())
 
@@ -12,6 +13,7 @@ const user = (function () {
     // only working like this because auth-system is not integrated yet
 
     return { 'role': 'admin' }
+    //return { 'role': 'user' }
     //return null;
 }())
 
@@ -22,10 +24,12 @@ function updateActions() {
         commands.logout.style.display = "flex";
         if (user.role == 'user') {
             commands.additem.style.display = "none";
+            commands.report.style.display = "none";
         } else {
             commands.additem.style.display = "flex";
         }
     } else {
+        commands.report.style.display = "none";
         commands.logout.style.display = "none";
         commands.login.style.display = "flex";
         commands.signup.style.display = "flex"

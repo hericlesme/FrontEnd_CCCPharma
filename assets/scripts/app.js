@@ -10,6 +10,13 @@ $addItemButton.addEventListener("click", () => {
 	productDialog.open();
 });
 
+const reportDialog = new MDCDialog(document.querySelector('#report-dialog'));
+
+let $reportButton = document.querySelector("#report-button");
+$reportButton.addEventListener("click", () => {
+	reportDialog.open();
+});
+
 const signupDialog = new MDCDialog(document.querySelector('#register-dialog'));
 
 let $signupButton = document.querySelector("#sign-up");
