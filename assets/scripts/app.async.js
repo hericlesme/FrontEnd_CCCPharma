@@ -3,4 +3,11 @@ import { register } from './app.js'
 
 setTimeout(() => {
 	register();
-}, 500); 
+
+	let $submitProductButton = document.querySelector("#submit-new-product");
+	$submitProductButton.addEventListener("click", function () {
+		setTimeout(() => {
+			register();
+		}, 500);
+	});
+}, 500);

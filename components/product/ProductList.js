@@ -1,4 +1,4 @@
-import {Product} from './Product.js';
+import { Product } from './Product.js';
 
 class ProductList extends HTMLUListElement {
     constructor() {
@@ -7,7 +7,6 @@ class ProductList extends HTMLUListElement {
     }
 
     refreshItems() {
-        console.log("refreshing");
         while(this.firstChild) this.removeChild(this.firstChild);
         this.connectedCallback();
     }
@@ -32,7 +31,7 @@ class ProductList extends HTMLUListElement {
         this.getProductsJson().then(productsJson => this.render(productsJson));
     }
 
-    render(products){
+    render(products) {
         this.products = products;
         var classes = ['mdc-image-list', 'mdc-image-list--masonry', 'product-list'];
         this.classList.add(...  classes);
