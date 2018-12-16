@@ -19,14 +19,7 @@ class ProductForm extends HTMLFormElement {
 		const category = {"name":category_name, discount };
 
 		// debug
-		console.log("nome: " + name);
-		console.log("categoria: " + category);
-		console.log("codigo de barras: " + bar_code);
-		console.log("fabricante: " + producer);
-		console.log("quantidade: " + stock);
-		console.log("url: " + image_path);
-		
-		console.log(JSON.stringify({
+		console.log("json enviado: " + JSON.stringify({
             	name: name, 
             	category: category, 
             	bar_code: bar_code,
@@ -37,8 +30,6 @@ class ProductForm extends HTMLFormElement {
             	price: price
         }));
 
-		// URL used for test purposes only
-		// mode: "no-cors" also for test purposes
 		fetch('https://cccpharma-rest.herokuapp.com/products/', {
             method: 'POST',
             headers: {
@@ -56,13 +47,16 @@ class ProductForm extends HTMLFormElement {
             })
         })
         .then( function(res) { return res.json(); } )
-        .then( function(data) { console.log("data:" + data); } )
         .catch( function(err) { console.log("error: " + err); } )
 
 		this.reset();
+			
+		// TODO fix new product listener
+		let $prodList = document.querySelector("#product-list");
+		$prodList.refreshItems();
 	}
 
-    connectedCallback() {
+  	connectedCallback() {
 		this.addEventListener('submit', this.handleSubmit);
 		this.render();
 	}

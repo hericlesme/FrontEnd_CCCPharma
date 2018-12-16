@@ -14,11 +14,8 @@ class ProductSale extends HTMLFormElement {
 		console.log("barcode: " + barcode);
 		console.log("quantidade: " + stock);
 
-		// URL used for test purposes only
-		// mode: "no-cors" also used for test purposes
-		fetch('http://ptsv2.com/t/g7mku-1544891444/post', {
+		fetch('https://cccpharma-rest.herokuapp.com/products/', {
 			method: 'POST',
-			mode: "no-cors",
 			headers: {
 				"Content-Type": "application/json"
 			},
@@ -29,7 +26,6 @@ class ProductSale extends HTMLFormElement {
 			})
 		})
 		.then(function (res) { return res.json(); })
-		.then(function (data) { console.log("data:" + data); })
 		.catch(function (err) { console.log("error: " + err); })
 
 		this.reset();

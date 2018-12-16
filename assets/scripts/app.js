@@ -26,7 +26,6 @@ $loginButton.addEventListener("click", () => {
 });
 
 const register = function register() {
-
 	let $products = document.getElementsByClassName('product');
 	let $purchaseForm = document.querySelector('#purchase-dialog form');
 	
