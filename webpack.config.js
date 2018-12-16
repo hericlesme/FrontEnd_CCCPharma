@@ -34,9 +34,22 @@ module.exports = [
     },
   },
   {
-    entry: glob.sync("./assets/scripts/*.js"),
+    entry: glob.sync("./assets/scripts/app.js"),
     output: {
       filename: "bundle-home.js"
+    },
+    module: {
+      loaders: [{
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {presets: ['env']}
+      }]
+    },
+  },
+  {
+    entry: glob.sync("./assets/scripts/app.async.js"),
+    output: {
+      filename: "bundle-home.async.js"
     },
     module: {
       loaders: [{

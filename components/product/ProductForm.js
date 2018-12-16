@@ -5,31 +5,54 @@ class ProductForm extends HTMLFormElement {
 		// Validate fields (??)
 
 		const name = $fields[0].value;
-		const category = $fields[1].value;
-		const bar_code = $fields[2].value;
-		const manufacturer = $fields[3].value;
-		const quantity = $fields[4].value;
+		const price = $fields[1].value;
+		const category_name = $fields[2].value;
+		const bar_code = $fields[3].value;
+		const producer = $fields[4].value;
+		const stock = $fields[5].value;
+		const image_path = $fields[6].value;
 		
-		const situation = true; // ??
+		const category_fraction = 0;
+		const expirationDate = false; // ??
 		
+		const discount = {fraction: category_fraction};
+		const category = {"name":category_name, discount };
+
 		// debug
 		console.log("nome: " + name);
 		console.log("categoria: " + category);
 		console.log("codigo de barras: " + bar_code);
-		console.log("fabricante: " + manufacturer);
-		console.log("quantidade: " + quantity);
+		console.log("fabricante: " + producer);
+		console.log("quantidade: " + stock);
+		console.log("url: " + image_path);
+		
+		console.log(JSON.stringify({
+            	name: name, 
+            	category: category, 
+            	bar_code: bar_code,
+            	producer: producer,
+            	stock: stock,
+            	image_path: image_path,
+            	expirationDate: expirationDate,
+            	price: price
+        }));
 
-		//let reqHeader = { "Content-Type": "application/json" };
-		fetch('http://ptsv2.com/t/7j1ti-1544841124/post', {
+		// URL used for test purposes only
+		// mode: "no-cors" also for test purposes
+		fetch('https://cccpharma-rest.herokuapp.com/products/', {
             method: 'POST',
-            headers: new Headers(),
+            headers: {
+            	"Content-Type": "application/json"
+        	},
             body: JSON.stringify({
             	name: name, 
             	category: category, 
             	bar_code: bar_code,
-            	manufacturer: manufacturer,
-            	quantity: quantity,
-            	situation: situation
+            	producer: producer,
+            	stock: stock,
+            	image_path: image_path,
+            	expirationDate: expirationDate,
+            	price: price
             })
         })
         .then( function(res) { return res.json(); } )
@@ -48,8 +71,13 @@ class ProductForm extends HTMLFormElement {
 		// Modularizar
         this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="nome" class="mdc-text-field__input" required>
+				  <input type="text" autocomplete="off" id="product-name" class="mdc-text-field__input" required>
 				  <label class="mdc-floating-label form-label" for="my-text-field">Nome</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
+				<div class="mdc-text-field">
+				  <input type="text" autocomplete="off" id="product-price" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="my-text-field">Preço</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
@@ -72,9 +100,14 @@ class ProductForm extends HTMLFormElement {
 				  <label class="mdc-floating-label form-label" for="quantidade">Quantidade</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
+				<div class="mdc-text-field">
+				  <input type="text" autocomplete="off" id="image-url" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="my-text-field">URL da imagem</label>
+				  <div class="mdc-line-ripple"></div>
+				</div>
 				<footer class="mdc-dialog__actions">
-					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">Cancelar</button>
-					<button id="submit" class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
+					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
+					<button class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
 				</footer>
 		`
     }
