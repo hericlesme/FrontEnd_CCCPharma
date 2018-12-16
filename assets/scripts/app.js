@@ -25,5 +25,18 @@ $loginButton.addEventListener("click", () => {
 	loginDialog.open();
 });
 
+const register = function register() {
 
-export { productPurchase };
+	let $products = document.getElementsByClassName('product');
+	let $purchaseForm = document.querySelector('#purchase-dialog form');
+	
+	for (let i = 0; i < $products.length; i++) {
+		$products[i].addEventListener('click', () => {
+			$purchaseForm.setupProductInfo($products[i]);
+			productPurchase.open();
+		});
+	}
+	
+}
+
+export { register };
