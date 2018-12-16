@@ -1,11 +1,19 @@
 class Report extends HTMLElement {
-	getReportJSON() {
-		return null;
-		// TODO
-		const URL = '';
+	getPurchasesJSON() {
+		const URL = 'https://cccpharma-rest.herokuapp.com/';
 		 
-		fetch(URL, {method: 'GET'})
-		.then(function (res) { return res.json(); })
+		return fetch(URL + 'purchase/report/', {method: 'GET'})
+		.then(res => { return res.json(); })
+		.then(data => { return data; })
+        .catch(function(err) { console.log(err.message); })
+	}
+
+	getProductsJSON() {
+		const URL = 'https://cccpharma-rest.herokuapp.com/';
+	
+		return fetch(URL + '/products/report/', {method: 'GET'})
+		.then( function (res) { return res.json(); } )
+		.then( (data) => { return data; } )
 		.catch(function (err) { console.log("error: " + err); })
 	}
 
@@ -14,14 +22,25 @@ class Report extends HTMLElement {
 	}
 
 	render() {
-		let report = this.getReportJSON();
+		this.getPurchasesJSON().then( (purchases) => {
+			this.getProductsJSON().then( (products) => {
+				this.innerHTML = '';
 
-		this.innerHTML = `
-			<p>Relatório aqui</p>
-			<footer class="mdc-dialog__actions">
-				<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Fechar</button>
-			</footer>
-		`
+				for(let i = 0; i < purchases.length; i++) {
+					this.innerHTML += `<p>${purchases[i]}</p>`
+				}
+
+				for(let i = 0; i < products.length; i++) {
+					this.innerHTML += `<p>${products[i]}</p>`
+				}
+
+				this.innerHTML += `
+				<footer class="mdc-dialog__actions">
+					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Fechar</button>
+				</footer>
+			`
+			})
+		});
 	}
 }
 
