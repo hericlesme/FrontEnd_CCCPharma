@@ -4,23 +4,22 @@ class LoginForm extends HTMLFormElement {
 		let $fields = this.querySelectorAll('input');
 		// Validate fields (??)
 
-		const email = $fields[0].value;
+		const login = $fields[0].value;
 		const password = $fields[1].value;
 		
 		// debug purposes
-		console.log("email: " + email);
+		console.log("login: " + login);
 		console.log("senha: " + password);
 
 		// URL used for test purposes only
 		// mode: "no-cors" also used for test purposes
-		fetch('http://ptsv2.com/t/g7mku-1544891444/post', {
+		fetch('https://cccpharma-rest.herokuapp.com/users/login/', {
             method: 'POST',
-            mode: "no-cors",
             headers: {
             	"Content-Type": "application/json"
         	},
             body: JSON.stringify({
-            	email: email,
+            	login: login,
             	password: password
             })
         })
@@ -40,8 +39,8 @@ class LoginForm extends HTMLFormElement {
 		// Modularizar
         this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="email-login" class="mdc-text-field__input" required>
-				  <label class="mdc-floating-label form-label" for="email">Email</label>
+				  <input type="text" autocomplete="off" id="username-login" class="mdc-text-field__input" required>
+				  <label class="mdc-floating-label form-label" for="username">Login</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">

@@ -4,25 +4,24 @@ class SignupForm extends HTMLFormElement {
 		let $fields = this.querySelectorAll('input');
 		// Validate fields (??)
 
-		const name = $fields[0].value;
+		const login = $fields[0].value;
 		const email = $fields[1].value;
 		const password = $fields[2].value;
 		
 		// debug
-		console.log("nome: " + name);
+		console.log("nome: " + login);
 		console.log("email: " + email);
 		console.log("senha: " + password);
 
 		// URL used for test purposes only
 		// mode: "no-cors" also used for test purposes
-		fetch('http://ptsv2.com/t/g7mku-1544891444/post', {
+		fetch('https://cccpharma-rest.herokuapp.com/users/', {
             method: 'POST',
-            mode: "no-cors",
             headers: {
             	"Content-Type": "application/json"
         	},
             body: JSON.stringify({
-            	name: name, 
+            	login: login,
             	email: email,
             	password: password
             })
