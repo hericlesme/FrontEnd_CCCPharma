@@ -7,7 +7,7 @@ class ProductList extends HTMLUListElement {
     }
 
     refreshItems() {
-        while(this.firstChild) this.removeChild(this.firstChild);
+        while(this.lastChild) this.removeChild(this.lastChild);
         this.connectedCallback();
     }
 

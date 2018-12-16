@@ -1,7 +1,6 @@
 class Report extends HTMLElement {
 	getReportJSON() {
 		return null;
-
 		// TODO
 		const URL = '';
 		 

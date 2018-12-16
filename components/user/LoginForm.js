@@ -21,7 +21,12 @@ class LoginForm extends HTMLFormElement {
             	password: password
             })
         })
-        .then( function(res) { return res.json(); } )
+        .then( function(res) { return res; } )
+        .then( function(data) {
+        	if(data.ok) {
+        		localStorage.setItem('role', (login === "admin") ? 'admin' : 'user' );
+        	}
+        })
         .catch( function(err) { console.log("error: " + err); } )
 
 		this.reset();
@@ -47,7 +52,7 @@ class LoginForm extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button class="mdc-button mdc-dialog__button" type="submit">Entrar</button>
+					<button id="log-in-button" class="mdc-button mdc-dialog__button" type="submit">Entrar</button>
 				</footer>
 		`
     }

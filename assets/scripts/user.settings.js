@@ -1,3 +1,27 @@
+var userObj = {'role': localStorage.getItem('role')}; 
+
+setTimeout( () => {
+    let $loginButton = document.querySelector("#log-in-button");
+    $loginButton.addEventListener("click", () => {
+        setTimeout(() => {
+            userObj.role = localStorage.getItem('role');
+            console.log(userObj);
+            updateActions();
+        }, 500);
+    })
+}, 500);
+
+setTimeout( () => {
+    let $logoutButton = document.querySelector("#logout");
+    $logoutButton.addEventListener("click", () => {
+        setTimeout(() => {
+            localStorage.setItem('role', '');
+            userObj.role = '';
+            updateActions();
+        }, 500);
+    })
+}, 500);
+
 const commands = (function () {
     return {
         "signup": document.querySelector("#sign-up"),
@@ -9,16 +33,11 @@ const commands = (function () {
 }())
 
 const user = (function () {
-    // change role to see admin-options while acessing the website
-    // only working like this because auth-system is not integrated yet
-
-    return { 'role': 'admin' }
-    //return { 'role': 'user' }
-    //return null;
+    return userObj;
 }())
 
 function updateActions() {
-    if (user) {
+    if (user.role) {
         commands.login.style.display = "none";
         commands.signup.style.display = "none"
         commands.logout.style.display = "flex";
@@ -27,6 +46,7 @@ function updateActions() {
             commands.report.style.display = "none";
         } else {
             commands.additem.style.display = "flex";
+            commands.report.style.display = "flex";
         }
     } else {
         commands.report.style.display = "none";

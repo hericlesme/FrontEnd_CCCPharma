@@ -1,18 +1,12 @@
 class ProductSale extends HTMLFormElement {
-
 	handleSubmit(event) {
 		event.preventDefault();
 		let $fields = this.querySelectorAll('input');
 		// Validate fields (??)
 
-		const product = $fields[0].value;
-		const barcode = $fields[1].value;
-		const stock = $fields[2].value;
-
-		// debug
-		console.log("nome: " + product);
-		console.log("barcode: " + barcode);
-		console.log("quantidade: " + stock);
+		const product_id = $fields[0].placeholder;
+		const bar_code = $fields[1].placeholder;
+		const quantity = $fields[2].value;
 
 		fetch('https://cccpharma-rest.herokuapp.com/products/', {
 			method: 'POST',
@@ -20,9 +14,9 @@ class ProductSale extends HTMLFormElement {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
-				product: product,
-				barcode: barcode,
-				stock: stock
+				product: {id: product_id},
+				bar_code: bar_code,
+				quantity: quantity
 			})
 		})
 		.then(function (res) { return res.json(); })
@@ -46,8 +40,8 @@ class ProductSale extends HTMLFormElement {
 		let disabled = (!this.product || this.product.stock <= 0); 
 			this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="purchase-product" class="mdc-text-field__input" disabled placeholder=${product ? product.name : ""}>
-				  <label class="mdc-floating-label form-label" for="my-text-field">Produto</label>
+				  <input type="text" autocomplete="off" id="purchase-product" class="mdc-text-field__input" disabled placeholder=${product ? product.id : ""}>
+				  <label class="mdc-floating-label form-label" for="my-text-field">ID do Produto</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
