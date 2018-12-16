@@ -11,8 +11,6 @@ class ProductForm extends HTMLFormElement {
 		const producer = $fields[4].value;
 		const stock = $fields[5].value;
 		const image_path = $fields[6].value;
-
-		console.log($fields);
 		
 		const category_fraction = 0;
 		const expirationDate = false; // ??
@@ -27,6 +25,17 @@ class ProductForm extends HTMLFormElement {
 		console.log("fabricante: " + producer);
 		console.log("quantidade: " + stock);
 		console.log("url: " + image_path);
+		
+		console.log(JSON.stringify({
+            	name: name, 
+            	category: category, 
+            	bar_code: bar_code,
+            	producer: producer,
+            	stock: stock,
+            	image_path: image_path,
+            	expirationDate: expirationDate,
+            	price: price
+        }));
 
 		// URL used for test purposes only
 		// mode: "no-cors" also for test purposes
@@ -42,7 +51,8 @@ class ProductForm extends HTMLFormElement {
             	producer: producer,
             	stock: stock,
             	image_path: image_path,
-            	expirationDate: expirationDate
+            	expirationDate: expirationDate,
+            	price: price
             })
         })
         .then( function(res) { return res.json(); } )

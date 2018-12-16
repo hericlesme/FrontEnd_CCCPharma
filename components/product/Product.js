@@ -9,13 +9,16 @@ class Product extends HTMLLIElement {
         for (const attribute in product) {
             this.setAttribute(attribute, product[attribute]);
         }
+
+        this.setAttribute("category", product["category"].name);
+        this.setAttribute("discount", product["category"]["discount"].fraction);
     }
 
     connectedCallback() {
-        this.imageUrl = this.getAttribute('imageUrl');
+        this.image_path = this.getAttribute('image_path');
         this.category = this.getAttribute('category');
         this.quantity = this.getAttribute('quantity');
-        this.barcode = this.getAttribute('barcode');
+        this.bar_code = this.getAttribute('bar_code');
         this.price = this.getAttribute('price');
         this.name = this.getAttribute('name');
         this.render();
@@ -27,7 +30,7 @@ class Product extends HTMLLIElement {
 
         this.innerHTML = `
         <h2>${this.name.toUpperCase()}</h2>
-        <img class="mdc-image-list__image" src="${this.imageUrl}">
+        <img class="mdc-image-list__image" src="${this.image_path}">
         <div class="mdc-image-list__supporting">
             <p>${this.category.toUpperCase()}</p>
             <span>${this.quantity == 0 ? "Indisponível" : "R$" + this.price}</span>

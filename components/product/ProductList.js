@@ -7,13 +7,14 @@ class ProductList extends HTMLUListElement {
     }
     getProductsJson() {
         // WORK IN PROGRESS
-        return fetch(this.url + "/products.json", {method: "GET"})
-            .then(data => data.json())
-            .catch(err => console.log(err.message));
+        return fetch("https://cccpharma-rest.herokuapp.com/products/", {method: "GET"})
+        .then(data => data.json())
+        .catch(err => console.log(err.message))
     }
 
     setProductsInDOM() {
         this.products.forEach(product => {
+            //console.log(product);
             const productCard = new Product(product);
             this.appendChild(productCard);
         });
