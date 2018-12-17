@@ -1,5 +1,6 @@
 import { Product } from './Product.js';
 import { Comparators } from './OrderMethods.js';
+import './Separators.js';
 
 class ProductList extends HTMLUListElement {
     constructor() {

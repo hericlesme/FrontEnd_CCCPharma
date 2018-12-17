@@ -46,7 +46,16 @@ class Report extends HTMLElement {
 					$lista2.appendChild($newElement);
 				}
 
+				this.innerHTML += `
+					<h2>Relatório geral de Produtos</h2>
+					<div class="divisor"></div>`
 				this.appendChild($lista);
+				
+				this.innerHTML += `
+					<h2>Relatório geral de Vendas</h2>
+					<div class="divisor"></div>
+				`
+				
 				this.appendChild($lista2);
 
 				this.innerHTML += `
