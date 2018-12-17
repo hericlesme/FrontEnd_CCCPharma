@@ -28,9 +28,6 @@ class ProductSale extends HTMLFormElement {
 		.then(function (res) {
 			swal("Compra registrada!", ("Pressione 'OK' para continuar..." ), "success")
 					.then(() => {
-						location.reload();
-					})
-					.then(() => {
 						let $prodList = document.querySelector("#product-list");
 						$prodList.refreshItems();
 
@@ -39,12 +36,6 @@ class ProductSale extends HTMLFormElement {
 
 					});			
 
-
-
-			// .then(() => location.reload());
-			// let $prodList = document.querySelector("#product-list");		 
-			// let $report = document.querySelector("custom-report");
-			// $report.update();
 			return res.json();
 		})
 		.catch(function (err) { 
