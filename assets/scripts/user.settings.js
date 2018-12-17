@@ -37,6 +37,15 @@ const user = (function () {
     return userObj;
 }())
 
+function notify() {
+    let productList = document.querySelector('.product-list');
+    if (productList) {
+        productList.products.forEach(product => {
+            if (product.stock < 15) alertify.notify(product.name + ' está com o Estoque reduzido', 'error', 6);
+        })
+    }
+}
+
 function updateActions() {
     if (user.role) {
         commands.login.style.display = "none";
@@ -46,6 +55,7 @@ function updateActions() {
             commands.additem.style.display = "none";
             commands.report.style.display = "none";
         } else {
+            notify();
             commands.additem.style.display = "flex";
             commands.report.style.display = "flex";
         }

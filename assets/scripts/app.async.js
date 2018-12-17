@@ -1,4 +1,6 @@
-import { MDCDialog } from '@material/dialog';
+/**
+ * Asychronus operations with listeners
+ */
 import { register } from './app.js'
 
 setTimeout(() => {
@@ -11,3 +13,4 @@ setTimeout(() => {
 		}, 1000);
 	});
 }, 500);
+
