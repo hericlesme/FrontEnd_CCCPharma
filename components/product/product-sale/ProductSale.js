@@ -28,7 +28,7 @@ class ProductSale extends HTMLFormElement {
 		.then(function (res) {
 			swal("Compra registrada!", ("Pressione 'OK' para continuar..." ), "success")
 					.then(() => {
-						let $prodList = document.querySelector("#product-list");
+						let $prodList = document.querySelector("product-list");
 						$prodList.refreshItems();
 
 						let $report = document.querySelector("custom-report");
