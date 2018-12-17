@@ -8,6 +8,6 @@ setTimeout(() => {
 	$submitProductButton.addEventListener("click", function () {
 		setTimeout(() => {
 			register();
-		}, 2000);
+		}, 5000);
 	});
-}, 1500);
+}, 5000);
