@@ -1,14 +1,15 @@
 @import "./common";
-@import "@material/drawer/mdc-drawer";
-@import "@material/list/mdc-list";
+
 @import "@material/image-list/mdc-image-list";
-@import "@material/ripple/mixins";
 @import "@material/typography/mdc-typography";
-@import "@material/elevation/mdc-elevation";
-@import "@material/chips/mdc-chips";
-@import "@material/dialog/mdc-dialog";
 @import "@material/textfield/mdc-text-field";
+@import "@material/elevation/mdc-elevation";
+@import "@material/drawer/mdc-drawer";
+@import "@material/dialog/mdc-dialog";
 @import "@material/button/mdc-button";
+@import "@material/chips/mdc-chips";
+@import "@material/list/mdc-list";
+@import "@material/ripple/mixins";
 
 .form-label {
   padding-bottom: 6%;

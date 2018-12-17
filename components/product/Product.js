@@ -33,7 +33,7 @@ class Product extends HTMLLIElement {
         <img class="mdc-image-list__image" src="${this.image_path}">
         <div class="mdc-image-list__supporting">
             <p>${this.category.toUpperCase()}</p>
-            <span>${this.stock == 0 ? "Indisponível" : "R$" + this.price}</span>
+            <span>${this.stock == 0 ? "Indisponível" : "R$" + Number(this.price).toFixed(2)}</span>
         </div>
     `
     }
