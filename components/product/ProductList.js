@@ -1,25 +1,20 @@
-import { Product } from './Product.js';
+import {Product} from './Product.js';
 
 class ProductList extends HTMLUListElement {
     constructor() {
-        super();
+        super()
         this.refresh = new CustomEvent('refresh');
     }
-
-    refreshItems() {
-        while(this.lastChild) this.removeChild(this.lastChild);
-        this.connectedCallback();
-    }
-
     getProductsJson() {
         // WORK IN PROGRESS
         return fetch("https://cccpharma-rest.herokuapp.com/products/", {method: "GET"})
         .then(data => data.json())
-        .catch(function(err) { console.log(err.message); })
+        .catch(err => console.log(err.message))
     }
 
     setProductsInDOM() {
         this.products.forEach(product => {
+            //console.log(product);
             const productCard = new Product(product);
             this.appendChild(productCard);
         });
@@ -31,7 +26,7 @@ class ProductList extends HTMLUListElement {
         this.getProductsJson().then(productsJson => this.render(productsJson));
     }
 
-    render(products) {
+    render(products){
         this.products = products;
         var classes = ['mdc-image-list', 'mdc-image-list--masonry', 'product-list'];
         this.classList.add(...  classes);
@@ -41,6 +36,7 @@ class ProductList extends HTMLUListElement {
 
 try {
     customElements.define('product-list', ProductList, {extends: 'ul'});
+    
 } catch (err) {
     const h3 = document.createElement('h3');
     h3.innerHTML = "Something went wrong!";

@@ -26,14 +26,16 @@ class ProductSale extends HTMLFormElement {
 			})
 		})
 		.then(function (res) {
-			let $prodList = document.querySelector("#product-list");
-			$prodList.refreshItems();
-		 
+			swal("Compra registrada!", ("Pressione 'OK' para continuar..." ), "success").then(location.reload());
+			let $prodList = document.querySelector("#product-list");		 
 			let $report = document.querySelector("custom-report");
 			$report.update();
 			return res.json();
 		})
-		.catch(function (err) { console.log("error: " + err); })
+		.catch(function (err) { 
+			swal("Ops!", ("Parece que houve um erro com sua compra." ), "error").then(location.reload());
+			console.log("error: " + err); 
+		});
 
 		this.reset();
 	}

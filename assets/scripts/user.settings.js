@@ -1,17 +1,18 @@
-var userObj = {'role': localStorage.getItem('role')}; 
+var userObj = { 'role': localStorage.getItem('role') };
 
-setTimeout( () => {
+setTimeout(() => {
     let $loginButton = document.querySelector("#log-in-button");
     $loginButton.addEventListener("click", () => {
         setTimeout(() => {
             userObj.role = localStorage.getItem('role');
-            console.log(userObj);
+            if (userObj.role == '')
+                swal("Hmmmmm!", ("Parece que há algo de errado com seus dados."), "warning");
             updateActions();
         }, 500);
     })
 }, 500);
 
-setTimeout( () => {
+setTimeout(() => {
     let $logoutButton = document.querySelector("#logout");
     $logoutButton.addEventListener("click", () => {
         setTimeout(() => {

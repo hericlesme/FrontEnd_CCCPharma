@@ -1,4 +1,5 @@
 import { MDCList } from '@material/list';
+import { MDCSelect } from '@material/select';
 import { MDCDialog } from '@material/dialog';
 
 new MDCList(document.querySelector('.mdc-list'));

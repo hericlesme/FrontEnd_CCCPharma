@@ -11,50 +11,55 @@ class ProductForm extends HTMLFormElement {
 		const producer = $fields[4].value;
 		const stock = $fields[5].value;
 		const image_path = $fields[6].value;
-		
+
 		const category_fraction = 0;
 		const expirationDate = false; // ??
-		
-		const discount = {fraction: category_fraction};
-		const category = {"name":category_name, discount };
+
+		const discount = { fraction: category_fraction };
+		const category = { "name": category_name, discount };
+
 
 		fetch('https://cccpharma-rest.herokuapp.com/products/', {
-            method: 'POST',
-            headers: {
-            	"Content-Type": "application/json"
-        	},
-            body: JSON.stringify({
-            	name: name, 
-            	category: category, 
-            	bar_code: bar_code,
-            	producer: producer,
-            	stock: stock,
-            	image_path: image_path,
-            	expirationDate: expirationDate,
-            	price: price
-            })
-        })
-        .then( function(res) { 
-        	let $prodList = document.querySelector("#product-list");
-			$prodList.refreshItems();
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				name: name,
+				category: category,
+				bar_code: bar_code,
+				producer: producer,
+				stock: stock,
+				image_path: image_path,
+				expirationDate: expirationDate,
+				price: price
+			})
+		})
+			.then(function (res) {
+				swal("Produto Cadastrado!", ("Pressione 'OK' para continuar..."), "success").then(() => location.reload());
+				let $prodList = document.querySelector("#product-list");
+				$prodList.refreshItems();
 
-			let $report = document.querySelector("custom-report");
-			$report.update();
+				let $report = document.querySelector("custom-report");
+				$report.update();
 
-        	return res.json();
-        })
-        .catch( function(err) { console.log("error: " + err); } )
+				return res.json();
+			})
+			.catch(function (err) {
+				swal("Ops!", ("Parece que houve um erro ao cadastrar o produto."), "error").then(() => location.reload());
+				console.log("error: " + err);
+			})
 		this.reset();
 	}
 
-  	connectedCallback() {
+	connectedCallback() {
 		this.addEventListener('submit', this.handleSubmit);
 		this.render();
 	}
 
-    render() {
+	render() {
 		// Modularizar
-        this.innerHTML = `
+		this.innerHTML = `
 				<div class="mdc-text-field">
 				  <input type="text" autocomplete="off" id="product-name" class="mdc-text-field__input" required>
 				  <label class="mdc-floating-label form-label" for="my-text-field">Nome</label>
@@ -95,13 +100,13 @@ class ProductForm extends HTMLFormElement {
 					<button id="submit-new-product" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit">Enviar</button>
 				</footer>
 		`
-    }
+	}
 }
 
 try {
-    customElements.define( 'product-form', ProductForm, {extends: 'form'} );
+	customElements.define('product-form', ProductForm, { extends: 'form' });
 } catch (err) {
-    const h3 = document.createElement('h3');
-    h3.innerHTML = "Something went wrong!";
-    document.body.appendChild(h3);
+	const h3 = document.createElement('h3');
+	h3.innerHTML = "Something went wrong!";
+	document.body.appendChild(h3);
 }
