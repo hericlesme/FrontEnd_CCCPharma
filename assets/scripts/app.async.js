@@ -1,3 +1,6 @@
+/**
+ * Asychronus operations with listeners
+ */
 import { register } from './app.js'
 
 setTimeout(() => {
