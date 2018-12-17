@@ -24,7 +24,7 @@ class OrderChipSet extends HTMLElement {
         this.classList.add("mdc-chip-set");
         this.classList.add("mdc-chip-set--choice");
         
-        const chipSet = ['Nome', 'Preço', 'Data', 'Categoria'];
+        const chipSet = ['Nome', 'Preço', 'Quantidade', 'Categoria'];
         this.setChipsInDOM(chipSet);
         this.firstChild.classList.add('mdc-chip--selected');
     }

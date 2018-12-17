@@ -1,4 +1,5 @@
-import {Product} from './Product.js';
+import { Product } from './Product.js';
+import { Comparators } from './OrderMethods.js';
 
 class ProductList extends HTMLUListElement {
     constructor() {
@@ -7,9 +8,9 @@ class ProductList extends HTMLUListElement {
     }
     getProductsJson() {
         // WORK IN PROGRESS
-        return fetch("https://cccpharma-rest.herokuapp.com/products/", {method: "GET"})
-        .then(data => data.json())
-        .catch(err => console.log(err.message))
+        return fetch("https://cccpharma-rest.herokuapp.com/products/", { method: "GET" })
+            .then(data => data.json())
+            .catch(err => console.log(err.message))
     }
 
     setProductsInDOM() {
@@ -21,22 +22,23 @@ class ProductList extends HTMLUListElement {
         this.dispatchEvent(this.refresh);
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.url = "components/product"
         this.getProductsJson().then(productsJson => this.render(productsJson));
     }
 
-    render(products){
-        this.products = products;
+    render(products, method = "name") {
+        this.innerHTML = ``
+        this.products = products.sort(Comparators[method]);
         var classes = ['mdc-image-list', 'mdc-image-list--masonry', 'product-list'];
-        this.classList.add(...  classes);
+        this.classList.add(...classes);
         this.setProductsInDOM();
     }
 }
 
 try {
-    customElements.define('product-list', ProductList, {extends: 'ul'});
-    
+    customElements.define('product-list', ProductList, { extends: 'ul' });
+
 } catch (err) {
     const h3 = document.createElement('h3');
     h3.innerHTML = "Something went wrong!";
