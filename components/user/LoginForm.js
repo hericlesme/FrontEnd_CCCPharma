@@ -6,41 +6,43 @@ class LoginForm extends HTMLFormElement {
 
 		const login = $fields[0].value;
 		const password = $fields[1].value;
-		
+
 		// debug purposes
 		console.log("login: " + login);
 		console.log("senha: " + password);
 
 		fetch('https://cccpharma-rest.herokuapp.com/users/login/', {
-            method: 'POST',
-            headers: {
-            	"Content-Type": "application/json"
-        	},
-            body: JSON.stringify({
-            	login: login,
-            	password: password
-            })
-        })
-        .then( function(res) { return res; } )
-        .then( (data) => {
-        	if(data.ok) {
-        		localStorage.setItem('role', (login === "admin") ? 'admin' : 'user' );
-        		console.log(this.parentNode.parentNode.parentNode.parentNode.close());
-        	}
-        })
-        .catch( function(err) { console.log("error: " + err); } )
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				login: login,
+				password: password
+			})
+		})
+			.then(function (res) { return res; })
+			.then((data) => {
+				if (data.ok) {
+					localStorage.setItem('role', (login === "admin") ? 'admin' : 'user');
+				}
+			})
+			.catch(function (err) {
+				swal("Hmmmmm!", ("Parece que há algo de errado aconteceu."), "error");
+				console.log("error: " + err);
+			})
 
 		this.reset();
 	}
 
-    connectedCallback() {
+	connectedCallback() {
 		this.addEventListener('submit', this.handleSubmit);
 		this.render();
 	}
 
-    render() {
+	render() {
 		// Modularizar
-        this.innerHTML = `
+		this.innerHTML = `
 				<div class="mdc-text-field">
 				  <input type="text" autocomplete="off" id="username-login" class="mdc-text-field__input" required>
 				  <label class="mdc-floating-label form-label" for="username">Login</label>
@@ -56,13 +58,13 @@ class LoginForm extends HTMLFormElement {
 					<button id="log-in-button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit">Entrar</button>
 				</footer>
 		`
-    }
+	}
 }
 
 try {
-    customElements.define( 'login-form', LoginForm, {extends: 'form'} );
+	customElements.define('login-form', LoginForm, { extends: 'form' });
 } catch (err) {
-    const h3 = document.createElement('h3');
-    h3.innerHTML = "Something went wrong!";
-    document.body.appendChild(h3);
+	const h3 = document.createElement('h3');
+	h3.innerHTML = "Something went wrong!";
+	document.body.appendChild(h3);
 }
