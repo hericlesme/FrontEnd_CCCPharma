@@ -11,8 +11,6 @@ class LoginForm extends HTMLFormElement {
 		console.log("login: " + login);
 		console.log("senha: " + password);
 
-		// URL used for test purposes only
-		// mode: "no-cors" also used for test purposes
 		fetch('https://cccpharma-rest.herokuapp.com/users/login/', {
             method: 'POST',
             headers: {
@@ -23,8 +21,13 @@ class LoginForm extends HTMLFormElement {
             	password: password
             })
         })
-        .then( function(res) { return res.json(); } )
-        .then( function(data) { console.log("data:" + data); } )
+        .then( function(res) { return res; } )
+        .then( (data) => {
+        	if(data.ok) {
+        		localStorage.setItem('role', (login === "admin") ? 'admin' : 'user' );
+        		console.log(this.parentNode.parentNode.parentNode.parentNode.close());
+        	}
+        })
         .catch( function(err) { console.log("error: " + err); } )
 
 		this.reset();
@@ -50,7 +53,7 @@ class LoginForm extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button class="mdc-button mdc-dialog__button" type="submit">Entrar</button>
+					<button id="log-in-button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit">Entrar</button>
 				</footer>
 		`
     }

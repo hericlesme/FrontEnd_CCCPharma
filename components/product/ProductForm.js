@@ -18,27 +18,6 @@ class ProductForm extends HTMLFormElement {
 		const discount = {fraction: category_fraction};
 		const category = {"name":category_name, discount };
 
-		// debug
-		console.log("nome: " + name);
-		console.log("categoria: " + category);
-		console.log("codigo de barras: " + bar_code);
-		console.log("fabricante: " + producer);
-		console.log("quantidade: " + stock);
-		console.log("url: " + image_path);
-		
-		console.log(JSON.stringify({
-            	name: name, 
-            	category: category, 
-            	bar_code: bar_code,
-            	producer: producer,
-            	stock: stock,
-            	image_path: image_path,
-            	expirationDate: expirationDate,
-            	price: price
-        }));
-
-		// URL used for test purposes only
-		// mode: "no-cors" also for test purposes
 		fetch('https://cccpharma-rest.herokuapp.com/products/', {
             method: 'POST',
             headers: {
@@ -55,14 +34,20 @@ class ProductForm extends HTMLFormElement {
             	price: price
             })
         })
-        .then( function(res) { return res.json(); } )
-        .then( function(data) { console.log("data:" + data); } )
-        .catch( function(err) { console.log("error: " + err); } )
+        .then( function(res) { 
+        	let $prodList = document.querySelector("#product-list");
+			$prodList.refreshItems();
 
+			let $report = document.querySelector("custom-report");
+			$report.update();
+
+        	return res.json();
+        })
+        .catch( function(err) { console.log("error: " + err); } )
 		this.reset();
 	}
 
-    connectedCallback() {
+  	connectedCallback() {
 		this.addEventListener('submit', this.handleSubmit);
 		this.render();
 	}
@@ -107,7 +92,7 @@ class ProductForm extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button class="mdc-button mdc-dialog__button" type="submit">Enviar</button>
+					<button id="submit-new-product" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit">Enviar</button>
 				</footer>
 		`
     }

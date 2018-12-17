@@ -7,14 +7,16 @@ class CustomDialog extends HTMLElement {
 			"product-form": `<form is="product-form"></form>`,
 			"product-sale": `<form is="product-sale"></form>`,
     		"sign-up": `<form is="sign-up-form"></form>`,
-    		"login": `<form is="login-form"></form>`
+    		"login": `<form is="login-form"></form>`,
+    		"report": `<custom-report></custom-report>`
     	};
 
     	this.identification = {
 			"product-form": "pform-dialog",
 			"product-sale": "purchase-dialog",
     		"sign-up": "register-dialog",
-    		"login": "login-dialog"
+    		"login": "login-dialog",
+    		"report": "report-dialog"
     	};
 
         this.render();
@@ -44,4 +46,8 @@ class CustomDialog extends HTMLElement {
 
 try {
     customElements.define( 'custom-dialog', CustomDialog );
-} catch (err) {}
+} catch (err) {
+	const h3 = document.createElement('h3');
+	h3.innerHTML = "Something went wrong!";
+	document.body.appendChild(h3);
+}

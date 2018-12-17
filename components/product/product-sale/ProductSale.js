@@ -1,35 +1,39 @@
 class ProductSale extends HTMLFormElement {
-
 	handleSubmit(event) {
 		event.preventDefault();
 		let $fields = this.querySelectorAll('input');
 		// Validate fields (??)
 
-		const product = $fields[0].value;
-		const barcode = $fields[1].value;
+		const product_id = $fields[0].placeholder;
+		const bar_code = $fields[1].placeholder;
 		const quantity = $fields[2].value;
 
-		// debug
-		console.log("nome: " + product);
-		console.log("barcode: " + barcode);
-		console.log("quantidade: " + quantity);
+		console.log( JSON.stringify({
+			product: {id: parseInt(product_id)},
+			bar_code: bar_code,
+			quantity: parseInt(quantity)
+		}) )
 
-		// URL used for test purposes only
-		// mode: "no-cors" also used for test purposes
-		fetch('http://ptsv2.com/t/g7mku-1544891444/post', {
+		fetch('https://cccpharma-rest.herokuapp.com/purchase/', {
 			method: 'POST',
-			mode: "no-cors",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
-				product: product,
-				barcode: barcode,
-				quantity: quantity
+				product: {id: parseInt(product_id)},
+				bar_code: bar_code,
+				quantity: parseInt(quantity)
 			})
 		})
-		.then(function (res) { return res.json(); })
-		.then(function (data) { console.log("data:" + data); })
+		.then(function (res) {
+			let $prodList = document.querySelector("#product-list");
+			$prodList.refreshItems();
+		 
+			let $report = document.querySelector("custom-report");
+			$report.update();
+
+			return res.json();
+		})
 		.catch(function (err) { console.log("error: " + err); })
 
 		this.reset();
@@ -47,26 +51,26 @@ class ProductSale extends HTMLFormElement {
 
 	render() {
 		let product = this.product;
-		let disabled = (!this.product || this.product.quantity <= 0); 
+		let disabled = (!this.product || this.product.stock <= 0); 
 			this.innerHTML = `
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="purchase-product" class="mdc-text-field__input" disabled placeholder=${product ? product.name : ""}>
-				  <label class="mdc-floating-label form-label" for="my-text-field">Produto</label>
+				  <input type="text" autocomplete="off" id="purchase-product" class="mdc-text-field__input" disabled placeholder=${product ? product.id : ""}>
+				  <label class="mdc-floating-label form-label" for="my-text-field">ID do Produto</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="text" autocomplete="off" id="purchase-barcode" class="mdc-text-field__input" disabled placeholder=${product ? product.barcode : ""}>
+				  <input type="text" autocomplete="off" id="purchase-barcode" class="mdc-text-field__input" disabled placeholder=${product ? product.bar_code : ""}>
 				  <label class="mdc-floating-label form-label" for="purchase-barcode">Código de Barras</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<div class="mdc-text-field">
-				  <input type="number" autocomplete="off" id="purchase-qnt" class="mdc-text-field__input" required min="1" max=${product ? product.quantity : ""}>
+				  <input type="number" autocomplete="off" id="purchase-qnt" class="mdc-text-field__input" required min="1" max=${product ? product.stock : ""}>
 				  <label class="mdc-floating-label form-label" for="purchase-qnt">Quantidade</label>
 				  <div class="mdc-line-ripple"></div>
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button id="submit" class="mdc-button mdc-dialog__button" type="submit" ${disabled ? "disabled" : ""}>${disabled ? "Indisponível": "Registrar"}</button>
+					<button id="submit" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit" ${disabled ? "disabled" : ""}>${disabled ? "Indisponível": "Registrar"}</button>
 				</footer>
 		`
 	}

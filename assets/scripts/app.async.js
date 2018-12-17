@@ -1,12 +1,13 @@
 import { MDCDialog } from '@material/dialog';
-import { productPurchase } from './app.js'
+import { register } from './app.js'
 
-let $products = document.getElementsByClassName('product');
-let $purchaseForm = document.querySelector('#purchase-dialog form');
+setTimeout(() => {
+	register();
 
-for (let i = 0; i < $products.length; i++) {
-	$products[i].addEventListener('click', () => {
-		$purchaseForm.setupProductInfo($products[i]);
-		productPurchase.open();
+	let $submitProductButton = document.querySelector("#submit-new-product");
+	$submitProductButton.addEventListener("click", function () {
+		setTimeout(() => {
+			register();
+		}, 1000);
 	});
-}
+}, 500);

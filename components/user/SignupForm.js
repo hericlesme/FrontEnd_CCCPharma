@@ -13,8 +13,6 @@ class SignupForm extends HTMLFormElement {
 		console.log("email: " + email);
 		console.log("senha: " + password);
 
-		// URL used for test purposes only
-		// mode: "no-cors" also used for test purposes
 		fetch('https://cccpharma-rest.herokuapp.com/users/', {
             method: 'POST',
             headers: {
@@ -27,7 +25,6 @@ class SignupForm extends HTMLFormElement {
             })
         })
         .then( function(res) { return res.json(); } )
-        .then( function(data) { console.log("data:" + data); } )
         .catch( function(err) { console.log("error: " + err); } )
 
 		this.reset();
@@ -58,7 +55,7 @@ class SignupForm extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button class="mdc-button mdc-dialog__button" type="submit">Registrar</button>
+					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit">Registrar</button>
 				</footer>
 		`
     }

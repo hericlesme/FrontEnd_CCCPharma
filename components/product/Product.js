@@ -17,7 +17,7 @@ class Product extends HTMLLIElement {
     connectedCallback() {
         this.image_path = this.getAttribute('image_path');
         this.category = this.getAttribute('category');
-        this.quantity = this.getAttribute('quantity');
+        this.stock = this.getAttribute('stock');
         this.bar_code = this.getAttribute('bar_code');
         this.price = this.getAttribute('price');
         this.name = this.getAttribute('name');
@@ -33,7 +33,7 @@ class Product extends HTMLLIElement {
         <img class="mdc-image-list__image" src="${this.image_path}">
         <div class="mdc-image-list__supporting">
             <p>${this.category.toUpperCase()}</p>
-            <span>${this.quantity == 0 ? "Indisponível" : "R$" + this.price}</span>
+            <span>${this.stock == 0 ? "Indisponível" : "R$" + this.price}</span>
         </div>
     `
     }
