@@ -1,11 +1,12 @@
 {
-  "name": "mdc-103-web",
+  "name": "ccc_pharma",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "webpack-dev-server --progress"
-  },
-  "license": "Apache-2.0",
+    "start": "webpack-dev-server --progress",
+      "heroku-postbuild": "webpack -p"
+    },
+  "license": "ISC",
   "devDependencies": {
     "@material/dialog": "^0.42.0",
     "babel-core": "^6.22.1",
