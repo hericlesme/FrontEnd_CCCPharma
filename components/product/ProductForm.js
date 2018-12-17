@@ -46,14 +46,13 @@ class ProductForm extends HTMLFormElement {
             	price: price
             })
         })
-        .then( function(res) { return res.json(); } )
+        .then( function(res) { 
+        	let $prodList = document.querySelector("#product-list");
+			$prodList.refreshItems();
+        	return res.json();
+        })
         .catch( function(err) { console.log("error: " + err); } )
-
 		this.reset();
-			
-		// TODO fix new product listener
-		let $prodList = document.querySelector("#product-list");
-		$prodList.refreshItems();
 	}
 
   	connectedCallback() {

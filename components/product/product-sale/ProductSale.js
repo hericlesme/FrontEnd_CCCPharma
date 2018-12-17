@@ -8,15 +8,21 @@ class ProductSale extends HTMLFormElement {
 		const bar_code = $fields[1].placeholder;
 		const quantity = $fields[2].value;
 
-		fetch('https://cccpharma-rest.herokuapp.com/products/', {
+		console.log( JSON.stringify({
+			product: {id: parseInt(product_id)},
+			bar_code: bar_code,
+			quantity: parseInt(quantity)
+		}) )
+
+		fetch('https://cccpharma-rest.herokuapp.com/purchase/', {
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
-				product: {id: product_id},
+				product: {id: parseInt(product_id)},
 				bar_code: bar_code,
-				quantity: quantity
+				quantity: parseInt(quantity)
 			})
 		})
 		.then(function (res) { return res.json(); })

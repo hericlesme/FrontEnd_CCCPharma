@@ -24,15 +24,25 @@ class Report extends HTMLElement {
 	render() {
 		this.getPurchasesJSON().then( (purchases) => {
 			this.getProductsJSON().then( (products) => {
-				this.innerHTML = '';
-
-				for(let i = 0; i < purchases.length; i++) {
-					this.innerHTML += `<p>${purchases[i]}</p>`
-				}
+				let $lista = document.createElement("ul");
 
 				for(let i = 0; i < products.length; i++) {
-					this.innerHTML += `<p>${products[i]}</p>`
+					let $newElement = document.createElement("li");
+					$newElement.innerText = products[i];
+
+					$lista.appendChild($newElement);
 				}
+
+				let $lista2 = document.createElement("ul");
+				for(let i = 0; i < purchases.length; i++) {
+					let $newElement = document.createElement("li");
+					$newElement.innerText = purchases[i];
+
+					$lista2.appendChild($newElement);
+				}
+
+				this.appendChild($lista);
+				this.appendChild($lista2);
 
 				this.innerHTML += `
 				<footer class="mdc-dialog__actions">
