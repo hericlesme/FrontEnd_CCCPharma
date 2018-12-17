@@ -8,6 +8,11 @@ class Report extends HTMLElement {
         .catch(function(err) { console.log(err.message); })
 	}
 
+	update() {
+		while(this.lastChild) this.removeChild(this.lastChild);
+		this.connectedCallback();
+	}
+
 	getProductsJSON() {
 		const URL = 'https://cccpharma-rest.herokuapp.com/';
 	
@@ -48,7 +53,7 @@ class Report extends HTMLElement {
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Fechar</button>
 				</footer>
-			`
+				`
 			})
 		});
 	}

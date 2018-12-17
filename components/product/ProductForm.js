@@ -18,18 +18,6 @@ class ProductForm extends HTMLFormElement {
 		const discount = {fraction: category_fraction};
 		const category = {"name":category_name, discount };
 
-		// debug
-		console.log("json enviado: " + JSON.stringify({
-            	name: name, 
-            	category: category, 
-            	bar_code: bar_code,
-            	producer: producer,
-            	stock: stock,
-            	image_path: image_path,
-            	expirationDate: expirationDate,
-            	price: price
-        }));
-
 		fetch('https://cccpharma-rest.herokuapp.com/products/', {
             method: 'POST',
             headers: {
@@ -49,6 +37,10 @@ class ProductForm extends HTMLFormElement {
         .then( function(res) { 
         	let $prodList = document.querySelector("#product-list");
 			$prodList.refreshItems();
+
+			let $report = document.querySelector("custom-report");
+			$report.update();
+
         	return res.json();
         })
         .catch( function(err) { console.log("error: " + err); } )

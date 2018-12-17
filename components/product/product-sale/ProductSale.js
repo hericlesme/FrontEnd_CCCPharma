@@ -25,7 +25,15 @@ class ProductSale extends HTMLFormElement {
 				quantity: parseInt(quantity)
 			})
 		})
-		.then(function (res) { return res.json(); })
+		.then(function (res) {
+			let $prodList = document.querySelector("#product-list");
+			$prodList.refreshItems();
+		 
+			let $report = document.querySelector("custom-report");
+			$report.update();
+
+			return res.json();
+		})
 		.catch(function (err) { console.log("error: " + err); })
 
 		this.reset();
@@ -62,7 +70,7 @@ class ProductSale extends HTMLFormElement {
 				</div>
 				<footer class="mdc-dialog__actions">
 					<button class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="button">Cancelar</button>
-					<button id="submit" class="mdc-button mdc-dialog__button" type="submit" ${disabled ? "disabled" : ""}>${disabled ? "Indisponível": "Registrar"}</button>
+					<button id="submit" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" type="submit" ${disabled ? "disabled" : ""}>${disabled ? "Indisponível": "Registrar"}</button>
 				</footer>
 		`
 	}
