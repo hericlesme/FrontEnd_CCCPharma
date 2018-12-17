@@ -38,8 +38,7 @@ class ProductForm extends HTMLFormElement {
 			.then(function (res) {
 				swal("Produto Cadastrado!", ("Pressione 'OK' para continuar..."), "success").then(() => location.reload());
 				let $prodList = document.querySelector("#product-list");
-				$prodList.refreshItems();
-
+				
 				let $report = document.querySelector("custom-report");
 				$report.update();
 
