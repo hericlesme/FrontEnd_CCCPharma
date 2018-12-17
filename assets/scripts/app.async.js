@@ -1,4 +1,3 @@
-import { MDCDialog } from '@material/dialog';
 import { register } from './app.js'
 
 setTimeout(() => {
@@ -11,3 +10,4 @@ setTimeout(() => {
 		}, 1000);
 	});
 }, 500);
+

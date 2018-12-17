@@ -1,5 +1,4 @@
 import { MDCList } from '@material/list';
-import { MDCSelect } from '@material/select';
 import { MDCDialog } from '@material/dialog';
 
 new MDCList(document.querySelector('.mdc-list'));
@@ -34,16 +33,16 @@ $loginButton.addEventListener("click", () => {
 
 const productPurchase = new MDCDialog(document.querySelector('#purchase-dialog'));
 
-const register = function register () {
+const register = function register() {
 	let $products = document.getElementsByClassName('product');
 	let $purchaseForm = document.querySelector('#purchase-dialog form');
 
 	for (let i = 0; i < $products.length; i++) {
-	    $products[i].addEventListener('click', () => {
-	        $purchaseForm.setupProductInfo($products[i]);
-	        productPurchase.open();
-	    });
-	} 
+		$products[i].addEventListener('click', () => {
+			$purchaseForm.setupProductInfo($products[i]);
+			productPurchase.open();
+		});
+	}
 }
 
 export { register };
