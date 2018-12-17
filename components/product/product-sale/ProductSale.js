@@ -31,7 +31,6 @@ class ProductSale extends HTMLFormElement {
 		 
 			let $report = document.querySelector("custom-report");
 			$report.update();
-
 			return res.json();
 		})
 		.catch(function (err) { console.log("error: " + err); })
