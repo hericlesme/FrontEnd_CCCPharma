@@ -1,29 +1,31 @@
 
-function separator(selector, category) {
-    document.querySelector(selector).addEventListener("click", () => {
-        let products = document.querySelector('.product-list').childNodes;
-        products.forEach(p => {
-            (p.category == category) ? (p.style.display = 'flex') : (p.style.display = 'none');
-        });
-    });
-}
-
-function showAll() {
-    document.querySelector('#all').addEventListener("click", () => {
-        let products = document.querySelector('.product-list').childNodes;
-        products.forEach(p => {
-            p.style.display = 'flex';
-        });
-    });
-}
 
 const Separators = (function () {
-    separator('#saude', 'Saúde');
-    separator('#cosmeticos', 'Cosméticos');
-    separator('#alimentos', 'Alimentos');
-    separator('#higiene', 'Higiene Pessoal');
-    showAll();
-});
+
+    (function setEventListeners(){
+        let ids = ['#saude','#cosmeticos','#alimentos','#higiene','#all']
+        ids.forEach(id => {
+            document.querySelector(id).addEventListener('click', () => {
+                let $list = document.querySelector('.product-list');
+                $list.render($list.products, $list.method, id);
+            });
+        })
+    }())
+
+    const cosmeticosSeparator = (product) => product.category.name.toLowerCase() == 'cosméticos';
+    const alimentosSeparator = (product) => product.category.name.toLowerCase() == 'alimentos';
+    const higieneSeparator = (product) => product.category.name.toLowerCase() == 'higiene';
+    const saudeSeparator = (product) => product.category.name.toLowerCase() == 'saúde';
+    const showAll = (product) => true;
+
+    return {
+        '#saude': saudeSeparator,
+        '#cosmeticos': cosmeticosSeparator,
+        '#alimentos': alimentosSeparator,
+        '#higiene': higieneSeparator,
+        '#all': showAll
+    }
+}());
 
 
-Separators();
+export { Separators }

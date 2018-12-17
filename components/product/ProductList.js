@@ -1,6 +1,6 @@
-import { Product } from './Product.js';
 import { Comparators } from './OrderMethods.js';
-import './Separators.js';
+import { Separators } from './Separators.js';
+import { Product } from './Product.js';
 
 class ProductList extends HTMLUListElement {
     constructor() {
@@ -8,15 +8,13 @@ class ProductList extends HTMLUListElement {
         this.refresh = new CustomEvent('refresh');
     }
     getProductsJson() {
-        // WORK IN PROGRESS
         return fetch("https://cccpharma-rest.herokuapp.com/products/", { method: "GET" })
             .then(data => data.json())
             .catch(err => console.log(err.message))
     }
 
     setProductsInDOM() {
-        this.products.forEach(product => {
-            //console.log(product);
+        this.view.forEach(product => {
             const productCard = new Product(product);
             this.appendChild(productCard);
         });
@@ -28,9 +26,11 @@ class ProductList extends HTMLUListElement {
         this.getProductsJson().then(productsJson => this.render(productsJson));
     }
 
-    render(products, method = "name") {
-        this.innerHTML = ``
-        this.products = products.sort(Comparators[method]);
+    render(products, method = "name", filter = "#all") {
+        this.innerHTML = ""
+        this.method = method;
+        this.products = products;
+        this.view = this.products.sort(Comparators[method]).filter(Separators[filter]);
         var classes = ['mdc-image-list', 'mdc-image-list--masonry', 'product-list'];
         this.classList.add(...classes);
         this.setProductsInDOM();
